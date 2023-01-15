@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- !required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class</title>
+  <!-- table main-mobile css -->
+  <link href="./css/table/mainMobile.css" rel="stylesheet">
+  <!-- table tablet css -->
+  <link href="./css/table/tablet.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- table desktop css -->
+  <link href="./css/table/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link href="./css/all.min.css" rel="stylesheet">
+  <!-- common css -->
+  <link href="./css/common.css" rel="stylesheet">
+  <!-- list style -->
+  <link rel="stylesheet" href="./css/listStyle/listStyle.css">
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <nav class="navbar-side sidebar">
+      <div class="nav-container">
+        <a class="navbar-brand" href="#">
+          <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+          <div class="sidebar-brand-text"><span>Brand</span></div>
+        </a>
+        <hr class="sidebar-divider">
+        <ul class="navbar-nav" id="sidebar-ul">
+          <li class="nav-item">
+            <a class="nav-link active" href="studentProfile.html">
+              <i class="#"></i>
+              <span>Thông tin</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="classInfo.html">
+              <i class="#"></i><span>Lớp học hiện tại</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="classList.html">
+              <i class="#"></i><span>Đăng kí lớp học</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="payment.html">
+                <i class="#"></i><span>Thông tin học phí</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="content-wrapper">
+      <!--!Navbar Top-->
+      <div class="navbar-top d-flex" id="page-top">
+        <div class="container-fluid d-flex">
+          <button id="sidebarToggleTop" class="btn-link" type="button"><i class="fas fa-bars"></i></button>
+          <form class="navbar-search d-flex">
+            <div class="input-group ">
+              <input class="nav-search" type="text" placeholder="Tìm kiếm ...">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+        <ul class="navbar-nav-ul d-flex">
+          <li class="nav-item">
+            <a class="dropdown-toggle nav-link search-icon-nav" href="#"><i class="fas fa-search"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span>3+</span><i class="fas fa-bell fa-fw"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span class="badge bg-danger badge-counter">7</span><i
+                class="fas fa-envelope fa-fw"></i></a>
+          </li>
+          <div class="topbar-divider"></div>
+          <li class="nav-item avatar-n">
+            <p><span class="avatar-text">Nguyễn Văn A</span></p>
+            <div class="avatar-nav"></div>
+          </li>
+        </ul>
+      </div>
+      <!--!Top-Nav Ends-->
+
+
+      <!--!Index's Main contents start here-->
+      <div class="index-content container-main">
+        <div class="table-section-header d-flex justify-between">
+          <h3>Danh sách lớp</h3>
+        </div>
+
+        <!--!row-->
+        <div class="row-table-container">
+          <div class="table-content-row">
+            <div class="user-setting margin-row-prof shadow-edit">
+              <!--Table Row Header-->
+              <div class="user-setting-head project-head">
+                <h6>Danh sách lớp học</h6>
+              </div>
+              <!--Table Row body-->
+              <div class="table-row-body project-body">
+                <!--!Table Top head-->
+                <div class="row-table-head margin-column-form d-flex justify-between">
+                  <div class="table-head-col text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                      <label class="form-label d-flex">
+                        Hiển thị&nbsp;
+                        <select class="form-control">
+                          <option value="10" selected="">4</option>
+                          <option value="25">8</option>
+                          <option value="25">12</option>
+                        </select>&nbsp;
+                      </label>
+                    </div>
+                  </div>
+                  <div class="table-head-col">
+                    <div class="dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search"
+                          class="form-control form-control-sm" aria-controls="dataTable" placeholder="Tìm theo ..."></label>
+                    </div>
+                  </div>
+                </div>
+
+                <!--List item-->
+                <div class="content-main">
+                    <ul class="products">
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <div href="" class="product-thumb">
+                                        <img src="http://f.imgs.vietnamnet.vn/2017/10/19/15/20171019151013-anh-tuyen-duong-26.JPG" alt="">
+                                    </div>
+                                    <a href="" class="join-now">Đăng kí</a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="prodct-cat">
+                                        <h3>A Nguyen</h3>
+                                    </div>
+                                    <div class="product-details">
+                                        <ul>
+                                            <li>- Lớp: A7</li>
+                                            <li>- Tuổi: 20</li>
+                                            <li>- Chứng chỉ: Ielts 8.0(overall), Toeic 900+</li>
+                                            <li>- Kinh nghiệm: > 3 năm</li>
+                                            <li>- Yêu cầu: Đã qua các khóa P,U,I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--!Table bottom head-->
+                <div class="row-table-head d-flex justify-between">
+                  <div class="table-head-col table-head-col2 text-nowrap">
+                    <p id="dataTable_info" class="dataTables_info margin-column-form" role="status">Hiện 5 lớp học</p>
+                  </div>
+                  <div class="table-head-col d-flex flex-end">
+                    <ul class="pagination margin-column-form d-flex">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                      </li>
+                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                            aria-hidden="true">»</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+              </div>
+              <!--Table row body ends-->
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="footer">
+          <footer>
+            <span>Copyright © Brand 2021</span>
+          </footer>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <a class="page-up-fixed" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+  </div>
+
+</body>
+
+</html>

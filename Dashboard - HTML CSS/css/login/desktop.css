@@ -1,0 +1,34 @@
+.login-form-container {
+    display: flex;
+    height: 580px;
+    width: 68%;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border-radius: .35rem;
+    -webkit-border-radius: .35rem;
+    -moz-border-radius: .35rem;
+    -ms-border-radius: .35rem;
+    -o-border-radius: .35rem;
+  }
+  
+  
+  .img-login {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    background-image: url(../../img/dogs/image3.jpeg);
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: .35rem;
+    border-bottom-left-radius: .35rem;
+  }
+  
+  .login-form {
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    padding: 0 12px;
+  }
+  

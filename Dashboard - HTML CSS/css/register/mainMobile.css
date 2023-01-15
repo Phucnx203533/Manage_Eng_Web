@@ -1,0 +1,162 @@
+.active i {
+  color: #fff;
+}
+
+.bg-register{
+  width: 100%;
+  height: max-content;
+  background-color: #4e73df;
+  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%)!important;
+  background-size: cover;
+  border: 1px solid transparent;
+}
+
+.register-form-container {
+  display: flex;
+  height: max-content;
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border-radius: .35rem;
+  -webkit-border-radius: .35rem;
+  -moz-border-radius: .35rem;
+  -ms-border-radius: .35rem;
+  -o-border-radius: .35rem;
+}
+
+.img-register {
+  display: none;
+  height: 100%!important;
+  width: 40%;
+  background-image: url(../../img/dogs/image2.jpeg)!important;
+  background-position: center;
+  background-size: cover;
+  border-top-left-radius: .35rem;
+  border-bottom-left-radius: .35rem;
+}
+/* .img-register img{
+  width: 100%;
+  height: max-content;
+  object-fit: cover;
+} */
+
+.register-form{
+  width: 100%;
+  height: 100%;
+  border-radius: .35rem;
+  background: #fff;
+  padding: 0 8px;
+}
+.register-form2 {
+  padding: 48px;
+}
+
+.register-form2 h4 {
+  margin-bottom: 24px;
+  font-family: "Nunito";
+  font-size: 24px;
+  font-weight: 400;
+}
+
+
+form {
+  display: block;
+  width: 100%;
+  border: 1px solid transparent;
+  color: rgb(133, 135, 150);
+  font-family: "Nunito";
+  overflow-wrap: break-word;
+}
+
+form input {
+  padding: 16px;
+  display: block;
+  font-size: .8rem;
+  border-radius: 10rem;
+  width: 100%;
+  margin-bottom: 16px;
+  border: 1px solid rgb(209, 211, 226);
+  line-height: 1.5;
+  color: #858796;
+  background-color: #fff;
+  background-clip: padding-box;
+  outline: none;
+}
+form input:focus{
+  /* border: 1px solid #4e73df; */
+  box-shadow: 0 0 3px rgba(78, 115, 223, 1);
+}
+
+.name-lname-reg {
+  width: 100%;
+}
+
+.register-btn {
+  width: 100%;
+  background-color: #4e73df;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: .8rem;
+  border-radius: 10rem;
+  padding: .85rem 1rem;
+  cursor: pointer;
+  transition: .2s ease;
+  -webkit-transition: .2s ease;
+  -moz-transition: .2s ease;
+  -ms-transition: .2s ease;
+  -o-transition: .2s ease;
+}
+
+.register-btn:hover {
+  background-color: #4564c2;
+}
+
+hr {
+  background: rgb(133, 135, 150);
+  margin: 16px 0;
+  color: rgb(133, 135, 150);
+  opacity: .5;
+}
+
+form a {
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+  text-align: center;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: .8rem;
+  border-radius: 10rem;
+  padding: .85rem 1rem;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+form .register-google {
+  background-color: #ea4335;
+}
+
+form .register-google:hover {
+  background-color: #cc3b2d;
+}
+
+form .register-fb {
+  background-color: #3b5998;
+}
+
+form .register-fb:hover {
+  background-color: #334d85;
+}
+
+a.small {
+  color: #4e73df;
+  text-decoration: underline;
+  font-size: 14px;
+  font-family: "Nunito";
+}
+

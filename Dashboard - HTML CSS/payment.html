@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- !required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+  <!-- table main-mobile css -->
+  <link href="./css/table/mainMobile.css" rel="stylesheet">
+  <!-- table tablet css -->
+  <link href="./css/table/tablet.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- table desktop css -->
+  <link href="./css/table/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link href="./css/all.min.css" rel="stylesheet">
+  <!-- common css -->
+  <link href="./css/common.css" rel="stylesheet">
+  <!-- payment css -->
+  <link rel="stylesheet" href="./css/paymentStyle/paymentStyle.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar-side sidebar">
+          <div class="nav-container">
+            <a class="navbar-brand " href="#">
+              <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+              <div class="sidebar-brand-text"><span>Brand</span></div>
+            </a>
+            <hr class="sidebar-divider">
+            <ul class="navbar-nav" id="sidebar-ul">
+              <li class="nav-item">
+                <a class="nav-link active" href="studentProfile.html">
+                  <i class="#"></i>
+                  <span>Thông tin</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="classInfo.html">
+                  <i class="#"></i><span>Lớp học hiện tại</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="classList.html">
+                  <i class="#"></i><span>Đăng kí lớp học</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Payment.html">
+                    <i class="#"></i><span>Thông tin học phí</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+    <div id="content-wrapper">
+      <!--!Navbar Top-->
+      <div class="navbar-top d-flex" id="page-top">
+        <div class="container-fluid d-flex">
+          <button id="sidebarToggleTop" class="btn-link" type="button"><i class="fas fa-bars"></i></button>
+        </div>
+        <ul class="navbar-nav-ul d-flex">
+          <li class="nav-item">
+            <a class="dropdown-toggle nav-link search-icon-nav" href="#"><i class="fas fa-search"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span>3+</span><i class="fas fa-bell fa-fw"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span class="badge bg-danger badge-counter">7</span><i
+                class="fas fa-envelope fa-fw"></i></a>
+          </li>
+          <div class="topbar-divider"></div>
+          <li class="nav-item avatar-n">
+            <p><span class="avatar-text">Nguyễn Văn A</span></p>
+            <div class="avatar-nav"></div>
+          </li>
+        </ul>
+      </div>
+      <!--!Top-Nav Ends-->
+
+
+      <!--!Index's Main contents start here-->
+      <div class="index-content container-main">
+        <div class="table-section-header d-flex justify-between">
+          <h3>Thông tin học phí</h3>
+        </div>
+
+        <!--!Table Itself-->
+        <div class="table-itself margin-column-form payment">
+            <table>
+              <thead>
+                <tr>
+                  <th>Mã học phần</th>
+                  <th>Tên học phần</th>
+                  <th>Số tín chỉ</th>
+                  <th>Trạng thái đăng kí</th>
+                  <th>Tổng tiền học phần</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>MI1111</td>
+                  <td>Học phần A</td>
+                  <td>3</td>
+                  <td>Lần 1</td>
+                  <td>12.000.000 vnđ</td>
+                </tr>
+            
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td><strong>Tổng</strong></td>
+                  <td><strong></strong></td>
+                  <td><strong></strong></td>
+                  <td><strong></strong></td>
+                  <td><strong>12.000.000 vnđ</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+            <div class="btn">
+                <a href="">Xuất phiếu học phí</a>
+            </div>
+        </div>
+        <!--Table row body ends-->
+    
+
+    </div>
+
+
+    <a class="page-up-fixed" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+  </div>
+
+</body>
+
+</html>
