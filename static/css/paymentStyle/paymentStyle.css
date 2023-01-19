@@ -1,0 +1,23 @@
+.payment{
+    position: relative;
+}
+.btn{
+    position: absolute;
+    margin: 20px 0;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #333;
+    left: 0;
+    border-radius: 5px;
+    background: #4e73df;
+}
+.btn a{
+    color: #fff;
+}
+.btn:hover{
+    background: #fff;
+    cursor: pointer;
+}
+.btn:hover a{
+    color: #333;
+}

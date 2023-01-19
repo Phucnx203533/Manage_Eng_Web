@@ -1,0 +1,15 @@
+.name-lname-reg {
+    width: 100%;
+    max-width: 100%;
+  }
+
+.name-flex input{
+    width: 250px;
+  }
+  .name-flex{
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    justify-content: space-between;
+  }
