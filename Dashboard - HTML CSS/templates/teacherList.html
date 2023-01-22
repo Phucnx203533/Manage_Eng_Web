@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thông tin lớp học</title>
+  <title>Danh sách giáo viên</title>
   <!-- table main-mobile css -->
   <link href="/Dashboard - HTML CSS/static/css/table/mainMobile.css" rel="stylesheet">
   <!-- table tablet css -->
@@ -18,8 +18,6 @@
   <!-- common css -->
   <link href="/Dashboard - HTML CSS/static/css/common.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
-
-  
 </head>
 
 <body>
@@ -28,9 +26,9 @@
     <nav class="navbar-side sidebar">
       <div class="nav-container">
         <a class="navbar-brand" href="#">
-          <div class="sidebar-brand-icon"><i class="fas"></i></div>
-          <div class="sidebar-brand-text"><span><br>The Language Center</span></div>
-        </a>
+            <div class="sidebar-brand-icon"><i class="fas"></i></div>
+            <div class="sidebar-brand-text"><span><br>The Language Center</span></div>
+          </a>
         <hr class="sidebar-divider">
         <ul class="navbar-nav" id="sidebar-ul">
           <li class="nav-item">
@@ -87,11 +85,11 @@
           </form>
         </div>
         <ul class="navbar-nav-ul d-flex">
-          <li class="nav-item avatar-n">
-            <p><span class="">Nguyễn Văn A</span></p>
-            <div class="avatar-nav"></div>
-          </li>
-        </ul>
+            <li class="nav-item avatar-n">
+              <p><span class="">Nguyễn Văn A</span></p>
+              <div class="avatar-nav"></div>
+            </li>
+          </ul>
       </div>
       <!--!Top-Nav Ends-->
 
@@ -99,34 +97,13 @@
       <!--!Index's Main contents start here-->
       <div class="index-content container-main">
         <div class="table-section-header d-flex justify-between">
-          <h3>Lớp IELTS 6.0</h3>
+          <h3>Danh sách giáo viên</h3>
         </div>
-         <!--!Row 1-->
-         <div>
-          <div>
-            <div>
-              <h4>Thông tin lớp học</h4>
-            </div>
-            <div>
-              <a><b>Tên lớp:</b> IELTS 6.0<br></a>
-              <a><b>Mã lớp:</b> ET1000<br></a>
-              <a><b>Giáo viên:</b> Trần Văn B <br></a>
-              <a><b>Thời gian học:</b> 14h-16h thứ 2, thứ 6<br></a>
-              <a><b>Địa điểm:</b> Phòng 308 <br></a> 
-              <a><b>Số lượng học viên:</b> 15 <br><br></a>              
-            </div>
-          </div>
-          </div>
-          
-        </div>
-        <!--!row2-->
+
+        <!--!row-->
         <div class="row-table-container">
           <div class="table-content-row">
             <div class="user-setting margin-row-prof shadow-edit">
-              <!--Table Row Header-->
-              <div class="user-setting-head project-head">
-                <h6>Danh sách lớp</h6>
-              </div>
               <!--Table Row body-->
               <div class="table-row-body project-body">
                 <!--!Table Top head-->
@@ -155,36 +132,42 @@
                   <table>
                     <thead>
                       <tr>
-                        <th>Tên</th>
-                        <th>Trình độ hiện tại</th>
-                        <th>Thông tin cá nhân</th>
+                        <th>Tên giáo viên</th>
+                        <th>Chức vụ</th>
+                        <th>Địa chỉ liên lạc</th>
+                        <th>Thông tin chi tiết</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Nguyễn Văn A</td>
-                        <td>B1</td>
-                        <td><a href="studentProfile.html">Chi tiết</a></td>
+                        <td>Nguyen Van A</td>
+                        <td>Giáo viên</td>
+                        <td>nguyenvana@gmail.com</td>
+                        <td><a href="teacherProfile.html">Chi tiết</a></td>
                       </tr>
                       <tr>
-                        <td>Nguyễn Văn A</td>
-                        <td>B1</td>
-                        <td><a href="studentProfile.html">Chi tiết</a></td>
+                        <td>Nguyen Van B</td>
+                        <td>Giáo viên</td>
+                        <td>nguyenvanb@gmail.com</td>
+                        <td><a href="teacherProfile.html">Chi tiết</a></td>
                       </tr>
                       <tr>
-                        <td>Nguyễn Văn A</td>
-                        <td>B1</td>
-                        <td><a href="studentProfile.html">Chi tiết</a></td>
+                        <td>Nguyen Van C</td>
+                        <td>Giáo viên</td>
+                        <td>nguyenvanc@gmail.com</td>
+                        <td><a href="teacherProfile.html">Chi tiết</a></td>
                       </tr>
                       <tr>
-                        <td>Nguyễn Văn A</td>
-                        <td>B1</td>
-                        <td><a href="studentProfile.html">Chi tiết</a></td>
+                        <td>Nguyen Van D</td>
+                        <td>Giáo viên</td>
+                        <td>nguyenvand@gmail.com</td>
+                        <td><a href="teacherProfile.html">Chi tiết</a></td>
                       </tr>
                       <tr>
-                        <td>Nguyễn Văn A</td>
-                        <td>B1</td>
-                        <td><a href="studentProfile.html">Chi tiết</a></td>
+                        <td>Nguyen Van E</td>
+                        <td>Giáo viên</td>
+                        <td>nguyenvane@gmail.com</td>
+                        <td><a href="teacherProfile.html">Chi tiết</a></td>
                       </tr>
                     </tbody>
                   </table>

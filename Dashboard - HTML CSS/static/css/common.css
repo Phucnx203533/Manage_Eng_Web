@@ -143,6 +143,9 @@ nav i {
 
 .sidebar-brand-text {
   display: none;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
 }
 
 /*! Top Nav*/
@@ -286,7 +289,7 @@ nav i {
   height: 30px;
   margin: 0 12px;
   border-radius: 100%;
-  background-image: url(../img/avatars/avatar1.jpeg);
+  background-image: url(https://i.pinimg.com/736x/b9/e3/8c/b9e38cb331502265ced6a64c414dff3f.jpg);
   background-position: center;
   background-size: cover;
 }
