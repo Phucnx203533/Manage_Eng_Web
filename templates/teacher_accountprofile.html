@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- !required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <!-- profile main-mobile css -->
+  <link href="../static/css/profile/mainMobile.css" rel="stylesheet">
+  <!-- profile tablet css -->
+  <link href="../static/css/profile/table.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- profile desktop css -->
+  <link href="../static/css/profile/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link href="../static/css/all.min.css" rel="stylesheet">
+  <!-- common css -->
+  <link href="../static/css/common.css" rel="stylesheet">
+</head>
+
+<body>
+  </script>
+  <div id="wrapper">
+    <nav class="navbar-side sidebar">
+      <div class="nav-container">
+        <a class="navbar-brand" href="#">
+          <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+          <div class="sidebar-brand-text"><span>TEC</span></div>
+        </a>
+        <hr class="sidebar-divider">
+        <ul class="navbar-nav" id="sidebar-ul">
+          <li class="nav-item">
+            <a class="nav-link active" href="/getprofileteacher">
+              <i class="#"></i>
+              <span>Thông tin giáo viên</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/getdataclass_teacher">
+              <i class="#"></i><span>Lớp học đang giảng dạy</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="#"></i><span>Chấm công</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="#"></i><span>Lương</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+                <i class="#"></i><span>Đăng xuất</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+    <div id="content-wrapper">
+      <!--!Navbar Top-->
+      <div class="navbar-top d-flex" id="page-top">
+        <div class="container-fluid d-flex">
+          <button id="sidebarToggleTop" class="btn-link" type="button"><i class="fas fa-bars"></i></button>
+          <form class="navbar-search d-flex">
+            <div class="input-group ">
+              <input class="nav-search" type="text" placeholder="Tìm kiếm ...">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+        <ul class="navbar-nav-ul d-flex">
+          <li class="nav-item">
+            <a class="dropdown-toggle nav-link search-icon-nav" href="#"><i class="fas fa-search"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span>3+</span><i class="fas fa-bell fa-fw"></i></a>
+          </li>
+          <li class="nav-item notific-span">
+            <a class="dropdown-toggle nav-link" href="#"><span class="badge bg-danger badge-counter">7</span><i
+                class="fas fa-envelope fa-fw"></i></a>
+          </li>
+          <div class="topbar-divider"></div>
+          <li class="nav-item avatar-n">
+            <p><span class="avatar-text">{{data[0]}}
+            </span></p>
+            <div class="avatar-nav" style="background-image: url({{URL_Img}});"></div>
+          </li>
+        </ul>
+      </div>
+      <!--!Top Nav ends-->
+
+      <!--!Index's Main contents start here-->
+      <div class="index-content container-main">
+
+        <!--!Dashboard header-->
+        <div class="prof-header  d-flex justify-between">
+          <h3>Thông tin</h3>
+        </div>
+        <div class="row-profile-container d-flex">
+          <!--!Row 1-->
+          <div class="row-prof1">
+            <!--!Profile img-->
+            <div class="col-profile prof-col1 margin-row-prof shadow-edit">
+              <div class="prof-body pr-body2">
+                <img src="{{URL_Img}}" alt="avatar">
+                <div>
+                  <button class="button-profile" type="button">Ảnh giáo viên</button>
+                </div>
+              </div>
+            </div>
+            <!--!Projects Profile-->
+          
+          </div>
+
+          <!--!Second column of Row 1-->
+          <div class="row-prof2 ">
+            <!--!User Settings-->
+            <div class="user-setting margin-row-prof shadow-edit">
+              <div class="user-setting-head project-head">
+                <h6>Thông tin giáo viên <a href="/editprofileteacher"><img src="../static/img/pencil_change.png" style="width:14px;margin-left: 40px;"></a></h6>
+              </div>
+              <div class="user-setting-body project-body">
+                <form>
+                  <!--row1-->
+                  <div class="form-row d-flex justify-between">
+                    <div class="form-row-col d-flex flex-direction-column">
+                      <label class="form-label" for="username"><strong>Họ tên</strong></label>
+                      <p class="form-control-prof" type="text" id="username" placeholder="VD: Nguyễn Văn A"
+                        name="username">
+                        {{data[0]}}
+                      </p>
+                    </div>
+                    <div class="form-row-col d-flex flex-direction-column">
+                      <label class="form-label" for="email"><strong>Địa chỉ</strong></label>
+                      <p class="form-control-prof" type="email" id="email" placeholder="user@example.com"
+                        name="emailAdress">
+                        {{data[3]}}
+                      </p>
+                    </div>
+                  </div>
+                  <!--row2-->
+                  <div class="form-row d-flex justify-between">
+                    <div class="form-row-col d-flex flex-direction-column">
+                      <label class="form-label" for="age"><strong>Ngày Sinh</strong></label>
+                      <p input class="form-control-prof" type="text" id="age" placeholder="VD: 19" name="age">
+                        {{date}}
+                      </p>
+                    </div>
+                    <div class="form-row-col d-flex flex-direction-column">
+                      <label class="form-label" for="lastname"><strong>Số điện thoại</strong></label>
+                      <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
+                        {{data[2]}}
+                      </p>
+                    </div>
+                  </div>
+                  <!--row3-->
+                  <div class="form-row d-flex justify-between">
+                    <div class="form-row-col d-flex flex-direction-column">
+                      <label class="form-label" for="lastname"><strong>Giới tính</strong></label>
+                      <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
+                        {{data[4]}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="form-row-col d-flex flex-direction-column">
+                    <label class="form-label" for="lastname"><strong>Email cá nhân</strong></label>
+                    <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
+                      {{data[8]}}
+                    </p>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+           
+          </div>
+        </div>
+        <div class="form-set-row">
+          <div class="form-padding-row">
+          <div class="from-setting-container shadow-edit">
+            <div class="project-head earning-header d-flex justify-between">
+              <h6 class="earning-header-text">Miêu tả</h6>
+            </div>
+            <!--body-->
+            <div class="user-setting-body project-body">
+              <form>
+                <!--row1-->
+                <div class="form-row form-row-col2 d-flex justify-between">
+                  <div class="form-row-textarea d-flex flex-direction-column margin-column-form">
+                    <p class="form-control-prof" type="text" style="width: 75vw;">
+                    {{data[6]}}
+                  </p>                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <a class="page-up-fixed" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+  </div>
+
+</body>
+
+</html>

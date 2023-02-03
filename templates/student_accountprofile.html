@@ -31,26 +31,32 @@
         <hr class="sidebar-divider">
         <ul class="navbar-nav" id="sidebar-ul">
           <li class="nav-item">
-            <a class="nav-link active" href="studentProfile.html">
+            <a class="nav-link active" href="{{url_for('getName')}}">
               <i class="#"></i>
-              <span>Thông tin</span>
+              <span>Thông tin học viên</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="classInfo.html">
+            <a class="nav-link" href="/getdataclass">
               <i class="#"></i><span>Lớp học hiện tại</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="classList.html">
-              <i class="#"></i><span>Đăng kí lớp học</span>
+            <a class="nav-link" href="/getgrade">
+              <i class="#"></i><span>Kết quả học tập</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/navTution">
-                <i class="#" ></i><span>Thông tin học phí</span>
+                <i class="#"></i><span>Thông tin học phí</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+                <i class="#"></i><span>Đăng xuất</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
     </nav>
@@ -201,7 +207,7 @@
                     <div class="form-row-col d-flex flex-direction-column">
                       <label class="form-label" for="age"><strong>Ngày Sinh</strong></label>
                       <p input class="form-control-prof" type="text" id="age" placeholder="VD: 19" name="age">
-                        {{data[2]}}
+                        {{date}}
                       </p>
                     </div>
                     <div class="form-row-col d-flex flex-direction-column">
@@ -219,6 +225,13 @@
                         {{data[5]}}
                       </p>
                     </div>
+                    <div class="form-row-col d-flex flex-direction-column">
+                      <label class="form-label" for="lastname"><strong>Email cá nhân</strong></label>
+                      <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
+                        {{data[7]}}
+                      </p>
+                    </div>
+
                   </div>
                   <!-- <div class="form-row">
                     <div class="form-row-button">

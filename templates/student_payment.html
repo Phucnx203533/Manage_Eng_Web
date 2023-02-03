@@ -35,22 +35,27 @@
               <li class="nav-item">
                 <a class="nav-link active" href="{{url_for('getName')}}">
                   <i class="#"></i>
-                  <span>Thông tin</span>
+                  <span>Thông tin học viên</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="classInfo.html">
+                <a class="nav-link" href="/getdataclass">
                   <i class="#"></i><span>Lớp học hiện tại</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="classList.html">
-                  <i class="#"></i><span>Đăng kí lớp học</span>
+                <a class="nav-link" href="/getgrade">
+                  <i class="#"></i><span>Kết quả học tập</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Payment.html">
+                <a class="nav-link" href="/navTution">
                     <i class="#"></i><span>Thông tin học phí</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class="#"></i><span>Đăng xuất</span>
                 </a>
               </li>
             </ul>
@@ -76,8 +81,9 @@
           </li>
           <div class="topbar-divider"></div>
           <li class="nav-item avatar-n">
-            <p><span class="avatar-text">Nguyễn Văn A</span></p>
-            <div class="avatar-nav"></div>
+            <p><span class="avatar-text">{{_data[1]}}
+            </span></p>
+            <div class="avatar-nav" style="background-image: url({{URL_Img}});"></div>
           </li>
         </ul>
       </div>
@@ -106,12 +112,12 @@
               <tbody>
                 {% for tution in tutions %}
                 <tr>
-                  <td>{{tution[0]}}</td>
+                  <td>{{tution[1]}}</td>
                   <td></td>
                   <td>{{tution[2]}}</td>
                   <td></td>
                   <td>{{tution[3]}} vnđ</td>
-                  {%if tution[8]%}
+                  {%if tution[5]%}
                   <td>Đã đóng tiền</td>
                   {%else%}
                   <td>Chưa đóng tiền</td>
