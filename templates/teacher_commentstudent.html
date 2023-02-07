@@ -30,50 +30,43 @@
         </a>
         <hr class="sidebar-divider">
         <ul class="navbar-nav" id="sidebar-ul">
-          <li class="nav-item">
-            <a class="nav-link active" href="/getprofileteacher">
-              <i class="#"></i>
-              <span>Thông tin giáo viên</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/getdataclass_teacher">
-              <i class="#"></i><span>Lớp học đang giảng dạy</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/getnumberofteach">
-              <i class="#"></i><span>Chấm công</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/getsalary">
-                <i class="#"></i><span>Lương</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">
-                <i class="#"></i><span>Đăng xuất</span>
-            </a>
-          </li>
-          
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link active" href="/getprofileteacher">
+                <i class="#"></i>
+                <span>Thông tin giáo viên</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/getdataclass_teacher">
+                <i class="#"></i><span>Lớp học đang giảng dạy</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="#"></i><span>Chấm công</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                  <i class="#"></i><span>Lương</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">
+                  <i class="#"></i><span>Đăng xuất</span>
+              </a>
+            </li>
+            
+          </ul>
       </div>
     </nav>
 
     <div id="content-wrapper">
       <!--!Navbar Top-->
-      <div class="navbar-top d-flex" id="page-top">
-        <div class="container-fluid d-flex">
-          <button id="sidebarToggleTop" class="btn-link" type="button"><i class="fas fa-bars"></i></button>
-          <form class="navbar-search d-flex">
-            <div class="input-group ">
-              <input class="nav-search" type="text" placeholder="Tìm kiếm ...">
-              <button class="btn btn-primary" type="button">
-                <i class="fas fa-search"></i></button>
-            </div>
-          </form>
-        </div>
+      
+            <div class="navbar-top d-flex" id="page-top">
+                <a href="/getdetailclass_teacher/{{datadetail_grade[2]}}"><span>&#8592; Quay lại</span></a>  
+       
         <ul class="navbar-nav-ul d-flex">
           <li class="nav-item">
             <a class="dropdown-toggle nav-link search-icon-nav" href="#"><i class="fas fa-search"></i></a>
@@ -100,7 +93,7 @@
 
         <!--!Dashboard header-->
         <div class="prof-header  d-flex justify-between">
-          <h3>Thông tin</h3>
+          <h3>Thông tin học viên</h3>
         </div>
         <div class="row-profile-container d-flex">
           <!--!Row 1-->
@@ -108,14 +101,12 @@
             <!--!Profile img-->
             <div class="col-profile prof-col1 margin-row-prof shadow-edit">
               <div class="prof-body pr-body2">
-                <img src="{{URL_Img}}" alt="avatar">
+                <img src="{{url_student}}" alt="avatar">
                 <div>
-                  <button class="button-profile" type="button">Ảnh giáo viên</button>
+                  <button class="button-profile" type="button">Ảnh học viên</button>
                 </div>
               </div>
             </div>
-            <!--!Projects Profile-->
-          
           </div>
 
           <!--!Second column of Row 1-->
@@ -123,7 +114,7 @@
             <!--!User Settings-->
             <div class="user-setting margin-row-prof shadow-edit">
               <div class="user-setting-head project-head">
-                <h6>Thông tin giáo viên <a href="/editprofileteacher"><img src="../static/img/pencil_change.png" style="width:14px;margin-left: 40px;"></a></h6>
+                <h6>Thông tin cá nhân</h6>
               </div>
               <div class="user-setting-body project-body">
                 <form>
@@ -133,78 +124,109 @@
                       <label class="form-label" for="username"><strong>Họ tên</strong></label>
                       <p class="form-control-prof" type="text" id="username" placeholder="VD: Nguyễn Văn A"
                         name="username">
-                        {{data[0]}}
+                        {{data_student[1]}}
                       </p>
                     </div>
                     <div class="form-row-col d-flex flex-direction-column">
-                      <label class="form-label" for="email"><strong>Địa chỉ</strong></label>
+                      <label class="form-label" for="email"><strong>Mã học viên</strong></label>
                       <p class="form-control-prof" type="email" id="email" placeholder="user@example.com"
                         name="emailAdress">
-                        {{data[3]}}
+                        {{data_student[0]}}
                       </p>
                     </div>
                   </div>
                   <!--row2-->
                   <div class="form-row d-flex justify-between">
                     <div class="form-row-col d-flex flex-direction-column">
-                      <label class="form-label" for="age"><strong>Ngày Sinh</strong></label>
+                      <label class="form-label" for="age"><strong>Tên lớp</strong></label>
                       <p input class="form-control-prof" type="text" id="age" placeholder="VD: 19" name="age">
-                        {{date}}
+                        {{datadetail_grade[1]}}
                       </p>
                     </div>
                     <div class="form-row-col d-flex flex-direction-column">
-                      <label class="form-label" for="lastname"><strong>Số điện thoại</strong></label>
+                      <label class="form-label" for="lastname"><strong>Mã lớp</strong></label>
                       <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
-                        {{data[2]}}
+                        {{datadetail_grade[2]}}
                       </p>
                     </div>
-                  </div>
-                  <!--row3-->
-                  <div class="form-row d-flex justify-between">
-                    <div class="form-row-col d-flex flex-direction-column">
-                      <label class="form-label" for="lastname"><strong>Giới tính</strong></label>
-                      <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
-                        {{data[4]}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="form-row-col d-flex flex-direction-column">
-                    <label class="form-label" for="lastname"><strong>Email cá nhân</strong></label>
-                    <p class="form-control-prof" type="text" id="nuber-phone" placeholder="VD: 09832xxx" name="nuber-phone">
-                      {{data[8]}}
-                    </p>
                   </div>
 
+                  </div>
+                  <!-- <div class="form-row">
+                    <div class="form-row-button">
+                      <button class="button-profile" type="button">Lưu thay đổi</button>
+                    </div>
+                  </div> -->
                 </form>
               </div>
 
             </div>
+            <!-- !Contact Settings -->
            
           </div>
         </div>
-        <div class="form-set-row">
+
+        <div class="form-set-row" style="margin-bottom:20px">
+            <div class="form-padding-row">
+            <div class="from-setting-container shadow-edit">
+              <!--Header-->
+              <div class="project-head earning-header d-flex justify-between">
+                <h6 class="earning-header-text">Điểm</h6>
+              </div>
+              <!--body-->
+              <div class="user-setting-body project-body" style="width:75vw;">
+                <form>
+                    <div class="form-row d-flex justify-between">
+                        <div class="form-row-col d-flex flex-direction-column">
+                          <label class="form-label" for="age"><strong>Điểm giữa khóa</strong></label>
+                          <input input class="form-control-prof" type="number" placeholder="{{datadetail_grade[3]}}">
+                            
+                          </input>
+                        </div>
+                        
+                        <div class="form-row-col d-flex flex-direction-column">
+                          <label class="form-label" for="lastname"><strong>Điểm cuối khóa</strong></label>
+                          <input class="form-control-prof" type="number" placeholder="{{datadetail_grade[4]}}">
+                          </input>
+                        </div>
+                      </div>
+                </form>
+                <form>
+                  <div class="form-row d-flex justify-between">
+                      <div class="form-row-col d-flex flex-direction-column">
+                        <label class="form-label" for="age"><strong>Điểm khoá học</strong></label>
+                        <p input class="form-control-prof" type="text">
+                          {{datadetail_grade[6]}}
+                        </p>
+                      </div>
+                </form>
+
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="form-set-row" style="margin-top:20px">
           <div class="form-padding-row">
           <div class="from-setting-container shadow-edit">
+            <!--Header-->
             <div class="project-head earning-header d-flex justify-between">
-              <h6 class="earning-header-text">Miêu tả</h6>
+              <h6 class="earning-header-text">Nhận xét của giáo viên</h6>
             </div>
             <!--body-->
-            <div class="user-setting-body project-body">
+            <div class="user-setting-body project-body" style="width:75vw;">
               <form>
-                <!--row1-->
-                <div class="form-row form-row-col2 d-flex justify-between">
-                  <div class="form-row-textarea d-flex flex-direction-column margin-column-form">
-                    <p class="form-control-prof" type="text" style="width: 75vw;">
-                    {{data[6]}}
-                  </p>                  </div>
-                </div>
+                    <div style="height: 50px;">
+                        <input  class="form-control-prof" type="text" id="cmt" placeholder="{{datadetail_grade[5]}}" name="cmt">
+                          </input>
+                    </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-
     </div>
+
+
 
   </div>
 

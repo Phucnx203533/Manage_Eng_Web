@@ -260,8 +260,64 @@ def getdataclass_teacher():
     url = storage.child(data[5]).get_url(user['idToken'])
     cursor.close()
     return render_template('teacher_classlist.html',data_class = data_class,URL_Img = url,data = data)
+@app.route('/getdetailclass_teacher/<string:id_class>')
+def getindetailclass_teacher(id_class):
+    cursor = mysql.connection.cursor()
+    print(id_class)
+    cursor.execute("SELECT count(*) userId FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.mClass = %s", (id_class,))
+    count_member = cursor.fetchone()
+    cursor.execute("SELECT * FROM `classes` JOIN teacher ON classes.mTechacer = teacher.mTeacher WHERE classes.mClass = %s",(id_class,))
+    infor_class = cursor.fetchall()
+    cursor.execute("SELECT user.name,user.userId FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p JOIN user ON p.userId = user.userId WHERE p.mClass = %s",(id_class,))
+    detail_student = cursor.fetchall()
+    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher  = %s",(_userId,))
+    data = cursor.fetchone()
+    url = storage.child(data[5]).get_url(user['idToken'])
+    cursor.close()
+    return render_template('teacher_classinfor.html',count_member = count_member, infor_class = infor_class, detail_student=detail_student,id =id_class,URL_Img = url,data=data)
+@app.route('/getdetailstudent_teacher/<string:id_user>,<string:id_class>')
+def getdetailstudent_teacher(id_user,id_class):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM (SELECT grade.userId,classes.name,classes.mClass,grade.midterm,grade.finalterm,grade.commnet,grade.fgrade,classes.mTechacer FROM classes,grade WHERE grade.mClass = classes.mClass) p WHERE p.userId = %s AND p.mClass = %s ",(id_user,id_class,))
+    datadetail_grade = cursor.fetchone()
+    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    data = cursor.fetchone()
+    url = storage.child(data[5]).get_url(user['idToken'])
+    cursor.execute("SELECT * FROM (SELECT user.userId,user.name,grade.mClass,user.fileImg FROM grade,user WHERE grade.userId =user.userId) p WHERE p.userId = %s AND p.mClass = %s",(id_user,id_class,))
+    data_student = cursor.fetchone()
+    url_student = storage.child(data_student[3]).get_url(user['idToken'])
+    return render_template('teacher_commentstudent.html',datadetail_grade = datadetail_grade,URL_Img = url,data=data,data_student=data_student,url_student=url_student)
 
+@app.route('/getsalary')
+def getsalary():
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM `salary` WHERE mTeacher = %s",(_userId,))
+    list_salary = cursor.fetchall()
+    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    data = cursor.fetchone()
+    url = storage.child(data[5]).get_url(user['idToken'])
+    return render_template("teacher_listsalary.html",list_salary=list_salary,data=data,URL_Img = url)
+@app.route('/getdetailsalary/<string:codesalary>')
+def getdetailsalary(codesalary):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM `salary` WHERE salary.codesalary = %s",(codesalary,))
+    detailsalary = cursor.fetchone()
+    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    data = cursor.fetchone()
+    url = storage.child(data[5]).get_url(user['idToken'])
+    basic_salary = detailsalary[1]*detailsalary[2]
+    fsalary = basic_salary + detailsalary[5]
+    return render_template("teacher_salary.html",detailsalary=detailsalary,data=data,URL_Img = url,basic_salary=basic_salary,fsalary=fsalary)
 
+@app.route('/getnumberofteach')
+def getnumberofteach():
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM (SELECT classes.mClass,classes.mTechacer,classes.name,salary.nTeach FROM `salary`,classes WHERE salary.mTeacher = classes.mTechacer) p WHERE p.mTechacer = %s",(_userId,))
+    numberteach = cursor.fetchall()
+    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    data = cursor.fetchone()
+    url = storage.child(data[5]).get_url(user['idToken'])
+    return render_template("teacher_numberteach.html",numberteach=numberteach,data=data,URL_Img = url)
 
 
 if __name__ == '__main__':
