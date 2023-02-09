@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- !required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- login main-mobile css -->
+  <link href="../static/css/login/mainMobile.css" rel="stylesheet">
+  <!-- login tablet css -->
+  <link href="../static/css/login/table.css" media="(min-width: 600px)" rel="stylesheet">
+  <!-- login desktop css -->
+  <link href="../static/css/login/desktop.css" media="(min-width: 900px)" rel="stylesheet">
+  <!-- icon font-awesome css -->
+  <link href="../static/css/all.min.css" rel="stylesheet">
+  <!-- common css -->
+  <link href="../static/css/common.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="bg-login" class="bg-login">
+
+    <div class="login-form-container">
+      <div class="img-login"></div>
+      <div class="login-form">
+        <div class="login-form2">
+          <div class="text-center">
+            <h4>Welcome Back!</h4>
+          </div>
+          <form class="user-login" action="{{url_for('login')}}" method="post">
+            <div><input class="form-control form-control-user" type="email" id="Email"
+                placeholder="Enter Email Address..." name="Email"></div>
+            <div><input class="form-control form-control-user" type="password" id="Pass"
+                placeholder="Password" name="Pass"></div>
+            <div>
+              <div class="custom-control custom-checkbox small">
+                <div class="form-check d-flex">
+                  <input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1" name="formCheck-1">
+                  <label class="form-check-label custom-control-label"  for="formCheck-1">Remember Me</label>
+                </div>
+              </div>
+            </div>
+            <button class="login-btn" type="submit">Login</button>
+          
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

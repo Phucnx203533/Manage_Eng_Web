@@ -1,0 +1,30 @@
+.register-form-container {
+    height: 750px;
+    width: 85%;
+}
+.img-register {
+    display: flex!important;
+    height: 100%!important;
+    width: 40%;
+}
+.register-form{
+    width: 60%;
+}
+.register-form2 {
+    padding: 52px;
+  }
+
+  .name-flex input{
+    width: 300px;
+  }
+  .name-flex{
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 1500px) {
+    .register-form-container {
+        height: 700px;
+    }
+}
