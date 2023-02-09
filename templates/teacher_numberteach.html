@@ -50,7 +50,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="//getnumberofteach">
+              <a class="nav-link" href="/getnumberofteach">
                 <i class="#"></i><span>Chấm công</span>
               </a>
             </li>
@@ -106,17 +106,19 @@
                   <table>
                     <thead>
                       <tr>
-                        <th>Mã Lớp</th>
-                        <th>Tên Lớp</th>
+                        <th>Mã Lương</th>
+                        <th></th>
                         <th>Số buổi dạy</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       {%for datas in numberteach%}
                       <tr>
-                        <td>{{datas[0]}}</td>
-                        <td>{{datas[2]}}</td>
-                        <td>{{datas[3]}}</td>
+                        <td>{{datas[6]}}</td>
+                        <td></td>
+                        <td>{{datas[1]}}</td>
+                        <td><a href="/checkin">Chấm công</a></td>
                       </tr>
                       {%endfor%}
                     </tbody>

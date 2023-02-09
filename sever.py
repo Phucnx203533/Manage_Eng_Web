@@ -73,7 +73,10 @@ def login():
     for acc in accs:
         if(acc[4] == 1):
             _userId = acc[0]
-            return redirect('/getName')
+            if(acc[3] == 1):
+                return redirect('/getName')
+            elif(acc[3] == 2):
+                return redirect('/getprofileteacher')    
     if request.method == "POST":
         details = request.form
         email = details['Email']
@@ -95,6 +98,13 @@ def login():
                     print(1)
                 return redirect('/getName')
             elif(account[3] == 2):
+                try:
+                    if(details['formCheck-1']):
+                        cursor.execute("UPDATE account SET account.rememberlogin = 1 WHERE account.userId = %s",(_userId,))
+                        mysql.connection.commit()
+                        cursor.close()
+                except:
+                    print(1)
                 return redirect('/getprofileteacher')
         else:
             msg = 'Incorrect username/password!'
@@ -111,7 +121,7 @@ def logout():
 @app.route('/getName')
 def getName():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     data = cursor.fetchone()
     cursor.close()
     url = storage.child(data[6]).get_url(user['idToken'])
@@ -130,15 +140,15 @@ def navTution():
 @app.route('/getPayment')
 def getPayperstu():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,tution.HPLop,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaHV = %s",(_userId,))
     data = cursor.fetchall()
-    cursor.execute("SELECT SUM(tution) FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.userId = %s",(_userId,))
+    cursor.execute("SELECT SUM(tution) FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaHV = %s",(_userId,))
     sumpay = cursor.fetchone()
-    cursor.execute("SELECT SUM(tution) FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.userId  = %s AND p.paid = 0",(_userId,))
+    cursor.execute("SELECT SUM(tution) FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaHV  = %s AND p.paid = 0",(_userId,))
     lefttution = cursor.fetchone()
-    cursor.execute("SELECT SUM(tution) FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.userId =  %s AND p.paid = 1",(_userId,))
+    cursor.execute("SELECT SUM(tution) FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaHV =  %s AND p.paid = 1",(_userId,))
     paidtution = cursor.fetchone()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     _data = cursor.fetchone()
     url = storage.child(_data[6]).get_url(user['idToken'])
     cursor.close()
@@ -151,9 +161,9 @@ def getPayperstu():
 @app.route('/getnowclass')
 def getinforclass():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaHV = %s",(_userId,))
     data_class = cursor.fetchall()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[6]).get_url(user['idToken'])
     return render_template('student_classlist.html',data_class = data_class,URL_Img = url,data = data)
@@ -161,9 +171,9 @@ def getinforclass():
 @app.route('/getdataclass')
 def getdataclass():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p JOIN (SELECT teacher.name,teacher.mTeacher FROM teacher) t ON t.mTeacher = p.mTechacer WHERE p.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p JOIN (SELECT teacher.HoTen,teacher.MaGV FROM teacher) t ON t.MaGV = p.MaGV WHERE p.MaHV = %s",(_userId,))
     data_class = cursor.fetchall()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[6]).get_url(user['idToken'])
     cursor.close()
@@ -173,13 +183,13 @@ def getdataclass():
 def getindetailclass(id_class):
     cursor = mysql.connection.cursor()
     print(id_class)
-    cursor.execute("SELECT count(*) userId FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.mClass = %s", (id_class,))
+    cursor.execute("SELECT count(*) userId FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaLop = %s", (id_class,))
     count_member = cursor.fetchone()
-    cursor.execute("SELECT * FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p JOIN teacher ON p.mTechacer = teacher.mTeacher WHERE p.userId = %s AND p.mClass = %s",(_userId, id_class,))
+    cursor.execute("SELECT * FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p JOIN teacher ON p.MaGV = teacher.MaGV WHERE p.MaHV = %s AND p.MaLop = %s",(_userId, id_class,))
     infor_class = cursor.fetchall()
-    cursor.execute("SELECT user.name,user.userId FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p JOIN user ON p.userId = user.userId WHERE p.mClass = %s",(id_class,))
+    cursor.execute("SELECT user.HoTen,user.MaHV FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p JOIN user ON p.MaHV = user.MaHV WHERE p.MaLop = %s",(id_class,))
     detail_student = cursor.fetchall()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[6]).get_url(user['idToken'])
     cursor.close()
@@ -188,7 +198,7 @@ def getindetailclass(id_class):
 @app.route('/getdetailstudent/<string:id_student>,<string:id_class>')
 def getdetailstudent(id_student,id_class):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(id_student,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(id_student,))
     data = cursor.fetchone()
     cursor.close()
     url = storage.child(data[6]).get_url(user['idToken'])
@@ -200,9 +210,9 @@ def getdetailstudent(id_student,id_class):
 @app.route('/getgrade')
 def getgrade():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT grade.userId,classes.name,classes.mClass,grade.midterm,grade.finalterm,grade.commnet,grade.fgrade FROM classes,grade WHERE grade.mClass = classes.mClass) p WHERE p.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM (SELECT grade.MaHV,classes.TenLop,classes.MaLop,grade.DiemGK,grade.DiemCK,grade.NhanXet,grade.DiemTK FROM classes,grade WHERE grade.MaLop = classes.MaLop) p WHERE p.MaHV = %s",(_userId,))
     data_grade = cursor.fetchall()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[6]).get_url(user['idToken'])
     return render_template('student_grade.html',data_grade = data_grade,URL_Img = url,data=data)
@@ -210,9 +220,9 @@ def getgrade():
 @app.route("/getdetailgrade/<string:id_class>")
 def getdetailgrade(id_class):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT grade.userId,classes.name,classes.mClass,grade.midterm,grade.finalterm,grade.commnet,grade.fgrade FROM classes,grade WHERE grade.mClass = classes.mClass) p WHERE p.userId = %s AND p.mClass = %s ",(_userId,id_class,))
+    cursor.execute("SELECT * FROM (SELECT grade.MaHV,classes.TenLop,classes.MaLop,grade.DiemGK,grade.DiemCK,grade.NhanXet,grade.DiemTK FROM classes,grade WHERE grade.MaLop = classes.MaLop) p WHERE p.MaHV = %s AND p.MaLop = %s ",(_userId,id_class,))
     datadetail_grade = cursor.fetchone()
-    cursor.execute("SELECT * FROM user WHERE user.userId = %s",(_userId,))
+    cursor.execute("SELECT * FROM user WHERE user.MaHV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[6]).get_url(user['idToken'])
     return render_template('student_commentbyteacher.html',datadetail_grade = datadetail_grade,URL_Img = url,data=data)
@@ -220,42 +230,32 @@ def getdetailgrade(id_class):
 @app.route("/getprofileteacher")
 def getprofileteacher():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV = %s",(_userId,))
     data = cursor.fetchone()
     cursor.close()
     url = storage.child(data[5]).get_url(user['idToken'])
     date = str(data[1])
     x = date.split("-")
     date = x[2]+'-'+x[1]+'-'+x[0]
-    return render_template("teacher_accountprofile.html",data = data,URL_Img = url,date = date)
+    return render_template("teacher_accountprofile.html",data=data,URL_Img =url,date=date)
 @app.route("/editprofileteacher")
 def editprofileteacher():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV = %s",(_userId,))
     data = cursor.fetchone()
     cursor.close()
     url = storage.child(data[5]).get_url(user['idToken'])
     date = str(data[1])
     x = date.split("-")
     date = x[2]+'-'+x[1]+'-'+x[0]
-    return render_template("teacher_editprofile.html",data = data,URL_Img = url,date = date)
-@app.route("/editavatar",methods=("POST", "GET"))
-def editavatar():
-    cursor = mysql.connection.cursor()
-    if request.method == 'POST':
-        files = request.files.getlist('uploaded-file')
-        for file in files:
-            f = str(file)
-            f=f.split("'")
-            print(f[1])
-        return redirect("/editprofileteacher")
+    return render_template("teacher_editprofile.html",data=data,URL_Img =url,date=date)
 
 @app.route('/getdataclass_teacher')
 def getdataclass_teacher():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM `classes` JOIN teacher ON classes.mTechacer = teacher.mTeacher WHERE classes.mTechacer = %s",(_userId,))
+    cursor.execute("SELECT * FROM `classes` JOIN teacher ON classes.MaGV = teacher.MaGV WHERE classes.MaGV = %s",(_userId,))
     data_class = cursor.fetchall()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher  = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV  = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[5]).get_url(user['idToken'])
     cursor.close()
@@ -263,14 +263,13 @@ def getdataclass_teacher():
 @app.route('/getdetailclass_teacher/<string:id_class>')
 def getindetailclass_teacher(id_class):
     cursor = mysql.connection.cursor()
-    print(id_class)
-    cursor.execute("SELECT count(*) userId FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p WHERE p.mClass = %s", (id_class,))
+    cursor.execute("SELECT count(*) MaHV FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p WHERE p.MaLop = %s", (id_class,))
     count_member = cursor.fetchone()
-    cursor.execute("SELECT * FROM `classes` JOIN teacher ON classes.mTechacer = teacher.mTeacher WHERE classes.mClass = %s",(id_class,))
+    cursor.execute("SELECT * FROM `classes` JOIN teacher ON classes.MaGV = teacher.MaGV WHERE classes.MaLop = %s",(id_class,))
     infor_class = cursor.fetchall()
-    cursor.execute("SELECT user.name,user.userId FROM (SELECT classes.mClass,classes.mTechacer,classes.name,classes.tution,classes.timedate,classes.location,tution.userId,tution.paid FROM classes JOIN tution ON classes.mClass = tution.mClass) p JOIN user ON p.userId = user.userId WHERE p.mClass = %s",(id_class,))
+    cursor.execute("SELECT user.HoTen,user.MaHV FROM (SELECT classes.MaLop,classes.MaGV,classes.TenLop,classes.tution,classes.ThoiGian,classes.DiaDiem,tution.MaHV,tution.paid FROM classes JOIN tution ON classes.MaLop = tution.MaLop) p JOIN user ON p.MaHV = user.MaHV WHERE p.MaLop = %s",(id_class,))
     detail_student = cursor.fetchall()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher  = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV  = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[5]).get_url(user['idToken'])
     cursor.close()
@@ -278,31 +277,36 @@ def getindetailclass_teacher(id_class):
 @app.route('/getdetailstudent_teacher/<string:id_user>,<string:id_class>')
 def getdetailstudent_teacher(id_user,id_class):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT grade.userId,classes.name,classes.mClass,grade.midterm,grade.finalterm,grade.commnet,grade.fgrade,classes.mTechacer FROM classes,grade WHERE grade.mClass = classes.mClass) p WHERE p.userId = %s AND p.mClass = %s ",(id_user,id_class,))
+    cursor.execute("SELECT * FROM (SELECT grade.MaHV,classes.TenLop,classes.MaLop,grade.DiemGK,grade.DiemCK,grade.NhanXet,grade.DiemTK,classes.MaGV FROM classes,grade WHERE grade.MaLop = classes.MaLop) p WHERE p.MaHV = %s AND p.MaLop = %s ",(id_user,id_class,))
     datadetail_grade = cursor.fetchone()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[5]).get_url(user['idToken'])
-    cursor.execute("SELECT * FROM (SELECT user.userId,user.name,grade.mClass,user.fileImg FROM grade,user WHERE grade.userId =user.userId) p WHERE p.userId = %s AND p.mClass = %s",(id_user,id_class,))
+    cursor.execute("SELECT * FROM (SELECT user.MaHV,user.HoTen,grade.MaLop,user.fileImg FROM grade,user WHERE grade.MaHV =user.MaHV) p WHERE p.MaHV = %s AND p.MaLop = %s",(id_user,id_class,))
     data_student = cursor.fetchone()
     url_student = storage.child(data_student[3]).get_url(user['idToken'])
+    global id_c
+    global id_u
+    id_c = id_class
+    id_u = id_user
+    
     return render_template('teacher_commentstudent.html',datadetail_grade = datadetail_grade,URL_Img = url,data=data,data_student=data_student,url_student=url_student)
 
 @app.route('/getsalary')
 def getsalary():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM `salary` WHERE mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM `salary` WHERE salary.MaGV = %s",(_userId,))
     list_salary = cursor.fetchall()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[5]).get_url(user['idToken'])
     return render_template("teacher_listsalary.html",list_salary=list_salary,data=data,URL_Img = url)
 @app.route('/getdetailsalary/<string:codesalary>')
 def getdetailsalary(codesalary):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM `salary` WHERE salary.codesalary = %s",(codesalary,))
+    cursor.execute("SELECT * FROM `salary` WHERE salary.MaLuong = %s",(codesalary,))
     detailsalary = cursor.fetchone()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[5]).get_url(user['idToken'])
     basic_salary = detailsalary[1]*detailsalary[2]
@@ -312,12 +316,88 @@ def getdetailsalary(codesalary):
 @app.route('/getnumberofteach')
 def getnumberofteach():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM (SELECT classes.mClass,classes.mTechacer,classes.name,salary.nTeach FROM `salary`,classes WHERE salary.mTeacher = classes.mTechacer) p WHERE p.mTechacer = %s",(_userId,))
+    cursor.execute("SELECT * FROM salary WHERE salary.MaGV = %s",(_userId,))
     numberteach = cursor.fetchall()
-    cursor.execute("SELECT * FROM teacher WHERE teacher.mTeacher = %s",(_userId,))
+    cursor.execute("SELECT * FROM teacher WHERE teacher.MaGV = %s",(_userId,))
     data = cursor.fetchone()
     url = storage.child(data[5]).get_url(user['idToken'])
     return render_template("teacher_numberteach.html",numberteach=numberteach,data=data,URL_Img = url)
+
+@app.route('/updateprofileteacher',methods=['GET', 'POST'])
+def updateprofileteacher():
+    cursor = mysql.connection.cursor()
+    if request.method == "POST":
+        cursor = mysql.connection.cursor()
+        details = request.form
+        try:
+            phonenumber = details['number-phone']
+        except:
+            phonenumber = None
+        try:
+            address = details['_address']
+        except:
+            address = None
+        if(phonenumber != None):
+            cursor.execute("UPDATE teacher SET teacher.DiaChi = %s WHERE teacher.MaGV = %s",(address,_userId,))
+            mysql.connection.commit()
+       
+        if(address != None):
+            cursor.execute("UPDATE teacher SET teacher.SDT = %s WHERE teacher.MaGV = %s",(phonenumber,_userId,))
+            mysql.connection.commit()
+        try:
+            des = details['descrip']
+        except:
+            des=None
+        if(des != None):
+            cursor.execute("UPDATE teacher SET teacher.TrinhDo = %s WHERE teacher.MaGV = %s",(des,_userId,))
+            mysql.connection.commit()
+    return redirect('/getprofileteacher')
+
+@app.route('/updateprofiledescription')
+def updateprofiledescription():
+    if request.method == "POST":
+        cursor = mysql.connection.cursor()
+        details = request.form
+        des = details['descrip']
+        cursor.execute("UPDATE teacher SET teacher.TrinhDo = %s WHERE teacher.MaGV = %s",(des,_userId,))
+        mysql.connection.commit()
+    return redirect('/editprofileteacher')
+
+@app.route('/updategrade',methods=['GET', 'POST'])
+def updategrade():
+    if request.method == "POST":
+        cursor = mysql.connection.cursor()
+        details = request.form
+        print(id_u)
+        try:
+            midterm = details['midterm']
+        except:
+            midterm = -1.0
+        try:
+            finalterm = details['finalterm']
+        except:
+            finalterm = -1.0
+        if(midterm != -1.0):
+            cursor.execute("UPDATE grade SET grade.DiemGK = %s WHERE grade.MaHV = %s AND grade.MaLop = %s",(midterm,id_u,id_c,))
+            mysql.connection.commit()
+        if(finalterm != -1.0):
+            cursor.execute("UPDATE grade SET grade.DiemCK = %s WHERE grade.MaHV = %s AND grade.MaLop = %s",(finalterm,id_u,id_c))
+            mysql.connection.commit()
+        cursor.execute("SELECT grade.DiemGK,grade.DiemCK FROM grade WHERE grade.MaHV = %s AND grade.MaLop = %s",(id_u,id_c,))
+        grade = cursor.fetchone()
+        cursor.execute("UPDATE grade SET grade.DiemTK = %s WHERE grade.MaHV = %s AND grade.MaLop = %s",(grade[0]*0.3+ grade[1]*0.7,id_u,id_c,))
+        mysql.connection.commit()
+    return redirect('/getdataclass_teacher')
+
+@app.route('/checkin')
+def checkin():
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT salary.SoBuoi FROM salary WHERE salary.MaGV = %s ",(_userId,))
+        numberTeach = cursor.fetchone()
+        nTeach = numberTeach[0]+1
+        cursor.execute("UPDATE salary SET salary.SoBuoi = %s WHERE salary.MaGV =%s",(nTeach,_userId))
+        mysql.connection.commit()
+        return redirect('/getnumberofteach')
 
 
 if __name__ == '__main__':

@@ -25,39 +25,39 @@
     <nav class="navbar-side sidebar">
       <div class="nav-container">
         <a class="navbar-brand" href="#">
-          <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-          <div class="sidebar-brand-text"><span>TEC</span></div>
+          <div class="sidebar-brand-icon"><i class="fas"></i></div>
+          <div class="sidebar-brand-text"><span><br>The Language Center</span></div>
         </a>
         <hr class="sidebar-divider">
         <ul class="navbar-nav" id="sidebar-ul">
-          <li class="nav-item">
-            <a class="nav-link active" href="{{url_for('getName')}}">
-              <i class="#"></i>
-              <span>Thông tin giáo viên</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/getnumberofteach">
-              <i class="#"></i><span>Lớp học đang giảng dạy</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="#"></i><span>Chấm công</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="#"></i><span>Lương</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">
-                <i class="#"></i><span>Đăng xuất</span>
-            </a>
-          </li>
-          
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link active" href="/getprofileteacher">
+                <i class="#"></i>
+                <span>Thông tin giáo viên</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/getdataclass_teacher">
+                <i class="#"></i><span>Lớp học đang giảng dạy</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/getnumberofteach">
+                <i class="#"></i><span>Chấm công</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/getsalary">
+                  <i class="#"></i><span>Lương</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">
+                  <i class="#"></i><span>Đăng xuất</span>
+              </a>
+            </li>
+            
+          </ul>
       </div>
     </nav>
 
@@ -137,7 +137,7 @@
                 <h6>Thông tin giáo viên <img src="../static/img/pencil_change.png" style="width:14px;margin-left: 40px;"></h6>
               </div>
               <div class="user-setting-body project-body">
-                <form>
+                <form action="{{url_for('updateprofileteacher')}}" method="POST">
                   <!--row1-->
                   <div class="form-row d-flex justify-between">
                     <div class="form-row-col d-flex flex-direction-column">
@@ -149,9 +149,8 @@
                     </div>
                     <div class="form-row-col d-flex flex-direction-column">
                       <label class="form-label" for="email"><strong>Địa chỉ</strong></label>
-                      <input class="form-control-prof" type="email" id="email" placeholder="{{data[3]}}"
-                        name="emailAdress">
-                        
+                      <input class="form-control-prof" type="text" id="_address" placeholder="{{data[3]}}"
+                        name="_address">
                       </input>
                     </div>
                   </div>
@@ -159,13 +158,13 @@
                   <div class="form-row d-flex justify-between">
                     <div class="form-row-col d-flex flex-direction-column">
                       <label class="form-label" for="age"><strong>Ngày Sinh</strong></label>
-                      <input input class="form-control-prof" type="text" id="age" placeholder="{{date}}" name="age">
-                        
-                      </input>
+                      <p input class="form-control-prof" type="date" id="_date" placeholder="{{date1}}" name="_date">
+                        {{date}}
+                      </p>
                     </div>
                     <div class="form-row-col d-flex flex-direction-column">
                       <label class="form-label" for="lastname"><strong>Số điện thoại</strong></label>
-                      <input class="form-control-prof" type="text" id="nuber-phone" placeholder="{{data[2]}}" name="nuber-phone"> 
+                      <input class="form-control-prof" type="text" id="number-phone" placeholder="{{data[2]}}" name="number-phone"> 
                       </input>
                     </div>
                   </div>
@@ -178,6 +177,7 @@
                       </p>
                     </div>
                   </div>
+                  <button class="button-profile" type="submit" >Lưu chỉnh sửa</button>
                 </form>
               </div>
 
@@ -189,18 +189,19 @@
           <div class="form-padding-row">
           <div class="from-setting-container shadow-edit">
             <div class="project-head earning-header d-flex justify-between">
-              <h6 class="earning-header-text">Miêu tả</h6>
+              <h6 class="earning-header-text">Trình Độ</h6>
             </div>
             <!--body-->
             <div class="user-setting-body project-body">
-              <form>
+              <form action="{{url_for('updateprofileteacher')}}" method="POST">
                 <!--row1-->
                 <div class="form-row form-row-col2 d-flex justify-between">
                   <div class="form-row-textarea d-flex flex-direction-column margin-column-form">
-                    <input class="form-control-prof" type="text" style="width: 75vw;" placeholder="{{data[6]}}">
+                    <input class="form-control-prof" type="text" style="width: 75vw;" placeholder="{{data[6]}}" name="descrip" id="descrip">
                     
-                  </input>                  </div>
+                  </input>   </div>
                 </div>
+                <button class="button-profile" type="submit">Lưu chỉnh sửa</button>
               </form>
             </div>
           </div>
@@ -208,8 +209,8 @@
       </div>
       <div class="form-row" style="margin:14px;width: 300px;height: 300px;">
           <div class="form-row-button">
-            <button class="button-profile" type="button">Lưu chỉnh sửa</button>
-            <button class="button-profile" type="button">Hủy chỉnh sửa</button>
+            <!-- <a href="/updateprofileteacher"><button class="button-profile" type="submit" >Lưu chỉnh sửa</button></a> -->
+            <a href="/getprofileteacher"><button class="button-profile" type="button" >Hủy chỉnh sửa</button></a>
           </div>
       </div>
     </div>
@@ -217,25 +218,7 @@
   </div>
     <a class="page-up-fixed" href="#page-top"><i class="fas fa-angle-up"></i></a>
   </div>
-  <script>
-    $(document).ready(function(){
-     // File type validation
-        $("#fileInput").change(function(){
-            var fileLength = this.files.length;
-            var match= ["image/jpeg","image/png","image/jpg","image/gif"];
-            var i;
-            for(i = 0; i < fileLength; i++){ 
-                var file = this.files[i];
-                var imagefile = file.type;
-                if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))){
-                    alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
-                    $("#fileInput").val('');
-                    return false;
-                }
-            }
-        });
-    });
-    </script>
+ 
 
 </body>
 
