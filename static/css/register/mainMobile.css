@@ -2,18 +2,18 @@
   color: #fff;
 }
 
-.bg-login{
+.bg-register{
   width: 100%;
   height: max-content;
   background-color: #4e73df;
   background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%)!important;
-  background-size: contain;
+  background-size: cover;
   border: 1px solid transparent;
 }
 
-.login-form-container {
+.register-form-container {
   display: flex;
-  height: 580px;
+  height: max-content;
   width: 90%;
   margin-top: 50px;
   margin-bottom: 250px;
@@ -27,40 +27,45 @@
   -o-border-radius: .35rem;
 }
 
-
-.img-login {
+.img-register {
   display: none;
-  height: 100%;
-  width: 50%;
-
-  background-image: url(../../img/login/The\ English\ Centre-logos.jpeg);
-
+  height: 100%!important;
+  width: 40%;
+  background-image: url(../../img/dogs/image2.jpeg)!important;
   background-position: center;
   background-size: cover;
   border-top-left-radius: .35rem;
   border-bottom-left-radius: .35rem;
 }
+/* .img-register img{
+  width: 100%;
+  height: max-content;
+  object-fit: cover;
+} */
 
-.login-form {
+.register-form{
   width: 100%;
   height: 100%;
   border-radius: .35rem;
   background: #fff;
   padding: 0 8px;
 }
-
-.login-form2 {
-  padding: 44px;
+.register-form2 {
+  padding: 48px;
 }
 
-.login-form2 h4 {
+.register-form2 h4 {
   margin-bottom: 24px;
   font-family: "Nunito";
   font-size: 24px;
   font-weight: 400;
 }
 
+
 form {
+  display: block;
+  width: 100%;
+  border: 1px solid transparent;
   color: rgb(133, 135, 150);
   font-family: "Nunito";
   overflow-wrap: break-word;
@@ -72,6 +77,7 @@ form input {
   font-size: .8rem;
   border-radius: 10rem;
   width: 100%;
+  margin-bottom: 16px;
   border: 1px solid rgb(209, 211, 226);
   line-height: 1.5;
   color: #858796;
@@ -84,23 +90,11 @@ form input:focus{
   box-shadow: 0 0 3px rgba(78, 115, 223, 1);
 }
 
-form div {
-  margin-bottom: 16px;
+.name-lname-reg {
+  width: 100%;
 }
 
-.form-check-input {
-  width: fit-content;
-}
-
-.form-check {
-  align-items: center;
-}
-
-.form-check label {
-  margin-left: 5px;
-}
-
-.login-btn {
+.register-btn {
   width: 100%;
   background-color: #4e73df;
   border: none;
@@ -117,7 +111,7 @@ form div {
   -o-transition: .2s ease;
 }
 
-.login-btn:hover {
+.register-btn:hover {
   background-color: #4564c2;
 }
 
@@ -143,19 +137,19 @@ form a {
   transition: .2s ease;
 }
 
-form .login-google {
+form .register-google {
   background-color: #ea4335;
 }
 
-form .login-google:hover {
+form .register-google:hover {
   background-color: #cc3b2d;
 }
 
-form .login-fb {
+form .register-fb {
   background-color: #3b5998;
 }
 
-form .login-fb:hover {
+form .register-fb:hover {
   background-color: #334d85;
 }
 
@@ -165,3 +159,4 @@ a.small {
   font-size: 14px;
   font-family: "Nunito";
 }
+

@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Class</title>
   <!-- table main-mobile css -->
-
   <link href="../static/css/table/mainMobile.css" rel="stylesheet">
   <!-- table tablet css -->
   <link href="../static/css/table/tablet.css" media="(min-width: 600px)" rel="stylesheet">
@@ -18,7 +17,6 @@
   <link href="../static/css/all.min.css" rel="stylesheet">
   <!-- common css -->
   <link href="../static/css/common.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -28,31 +26,37 @@
       <div class="nav-container">
         <a class="navbar-brand" href="#">
           <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-          <div class="sidebar-brand-text"><span>Brand</span></div>
+          <div class="sidebar-brand-text"><span>The Language Center</span></div>
         </a>
         <hr class="sidebar-divider">
         <ul class="navbar-nav" id="sidebar-ul">
           <li class="nav-item">
-            <a class="nav-link active" href="studentProfile.html">
+            <a class="nav-link active" href="{{url_for('getName')}}">
               <i class="#"></i>
-              <span>Thông tin</span>
+              <span>Thông tin học viên</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="classInfo.html">
+            <a class="nav-link" href="/getdataclass">
               <i class="#"></i><span>Lớp học hiện tại</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="classList.html">
-              <i class="#"></i><span>Đăng kí lớp học</span>
+            <a class="nav-link" href="/getgrade">
+              <i class="#"></i><span>Kết quả học tập</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="payment.html">
+            <a class="nav-link" href="/navTution">
                 <i class="#"></i><span>Thông tin học phí</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+                <i class="#"></i><span>Đăng xuất</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
     </nav>
@@ -83,8 +87,9 @@
           </li>
           <div class="topbar-divider"></div>
           <li class="nav-item avatar-n">
-            <p><span class="avatar-text">Nguyễn Văn A</span></p>
-            <div class="avatar-nav"></div>
+            <p><span class="avatar-text">{{data[1]}}
+            </span></p>
+            <div class="avatar-nav" style="background-image: url({{URL_Img}});"></div>
           </li>
         </ul>
       </div>
@@ -94,7 +99,7 @@
       <!--!Index's Main contents start here-->
       <div class="index-content container-main">
         <div class="table-section-header d-flex justify-between">
-          <h3>Lớp I5</h3>
+          <h3>Kết quả học tập hiện tại</h3>
         </div>
 
         <!--!row-->
@@ -103,7 +108,7 @@
             <div class="user-setting margin-row-prof shadow-edit">
               <!--Table Row Header-->
               <div class="user-setting-head project-head">
-                <h6>Thông tin lớp học</h6>
+                <h6>Kết quả</h6>
               </div>
               <!--Table Row body-->
               <div class="table-row-body project-body">
@@ -133,74 +138,26 @@
                   <table>
                     <thead>
                       <tr>
-                        <th>Tên</th>
-                        <th>Số điện thoại</th>
-                        <th>Địa chỉ</th>
-                        <th>Tuổi</th>
-                        <th>Bắt đầu</th>
+                        <th>Tên Lớp</th>
+                        <th>Mã Lớp</th>
+                        <th>Điểm Giữa Khóa</th>
+                        <th>Điểm cuối khóa</th>
+                        <th>Điểm tổng kết</th>
+                        <th>Nhận xét của giáo viên</th>
                       </tr>
                     </thead>
                     <tbody>
+                      {%for data in data_grade%}
                       <tr>
-
-                        <td><img class="table-img" width="30" height="30" src="../static/img/avatars/avatar1.jpeg">Airi Satou
-
-                        </td>
-                        <td>0988xxx</td>
-                        <td>Hà Giang</td>
-                        <td>15</td>
-                        <td>19/01/2023</td>
+                        <td>{{data[1]}}</td>
+                        <td>{{data[2]}}</td>
+                        <td>{{data[3]}}</td>
+                        <td>{{data[4]}}</td>
+                        <td>{{data[6]}}</td>
+                        <td><a href="/getdetailgrade/{{data[2]}}">Chi tiết</a></td>
                       </tr>
-                      <tr>
-
-                        <td><img class="table-img" width="30" height="30" src="../static/img/avatars/avatar1.jpeg">Airi Satou
-
-                        </td>
-                        <td>0988xxx</td>
-                        <td>Hà Giang</td>
-                        <td>15</td>
-                        <td>19/01/2023</td>
-                      </tr>
-                      <tr>
-
-                        <td><img class="table-img" width="30" height="30" src="../static/img/avatars/avatar1.jpeg">Airi Satou
-
-                        </td>
-                        <td>0988xxx</td>
-                        <td>Hà Giang</td>
-                        <td>15</td>
-                        <td>19/01/2023</td>
-                      </tr>
-                      <tr>
-
-                        <td><img class="table-img" width="30" height="30" src="../static/img/avatars/avatar1.jpeg">Airi Satou
-
-                        </td>
-                        <td>0988xxx</td>
-                        <td>Hà Giang</td>
-                        <td>15</td>
-                        <td>19/01/2023</td>
-                      </tr>
-                      <tr>
-
-                        <td><img class="table-img" width="30" height="30" src="../static/img/avatars/avatar1.jpeg">Airi Satou
-
-                        </td>
-                        <td>0988xxx</td>
-                        <td>Hà Giang</td>
-                        <td>15</td>
-                        <td>19/01/2023</td>
-                      </tr>
+                      {%endfor%}
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <td><strong>Tên</strong></td>
-                        <td><strong>Số điện thoại</strong></td>
-                        <td><strong>Địa chỉ</strong></td>
-                        <td><strong>Tuổi</strong></td>
-                        <td><strong>Bắt đầu</strong></td>
-                      </tr>
-                    </tfoot>
                   </table>
                 </div>
 
